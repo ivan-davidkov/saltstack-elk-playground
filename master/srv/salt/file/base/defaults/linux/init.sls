@@ -1,0 +1,3 @@
+include:
+  - .repositories
+  - .packages

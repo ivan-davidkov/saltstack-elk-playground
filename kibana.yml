@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+  kibana:
+    build:
+      context: kibana/
+    container_name: kibana
+    volumes:
+      - ./kibana/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - saltOS
+    ports:
+      - 9443
+
+networks:
+  saltOS:
+    driver: bridge

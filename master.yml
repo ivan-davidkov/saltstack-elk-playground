@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+  master:
+    build:
+      context: master/
+    container_name: master
+    volumes:
+      - ./master/etc/salt:/etc/salt
+      - ./master/srv:/srv
+    ports:
+      - "4505:4505"
+      - "4506:4506"
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-master
+    networks:
+      - saltOS
+  
+networks:
+  saltOS:
+    driver: bridge

@@ -1,0 +1,5 @@
+*.crt
+*.key
+*.pem
+*.pub
+*/etc/salt/pki/*

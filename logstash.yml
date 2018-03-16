@@ -1,0 +1,21 @@
+version: '2'
+services:
+
+  logstash:
+    build:
+      context: logstash/
+    container_name: logstash
+    volumes:
+      - ./logstash/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - saltOS
+  
+networks:
+  saltOS:
+    driver: bridge

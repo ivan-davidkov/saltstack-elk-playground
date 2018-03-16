@@ -1,0 +1,21 @@
+version: '2'
+services:
+
+  elastic:
+    build:
+      context: elastic/
+    container_name: elastic
+    volumes:
+      - ./elastic/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - saltOS
+  
+networks:
+  saltOS:
+    driver: bridge
