@@ -15,12 +15,14 @@ git clone https://github.com/ivan-davidkov/saltstack-elk-playground.git
 ... generate certificates for nginx different services (used as frontend proxy for kibana and cerebro)
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
--keyout master/srv/salt/file/base/linux/apps/kibana/nginx-conf/ssl/kibana.key \ -out master/srv/salt/file/base/linux/apps/kibana/nginx-conf/ssl/kibana.crt
+-keyout master/srv/salt/file/base/linux/apps/kibana/nginx-conf/ssl/kibana.key \
+-out master/srv/salt/file/base/linux/apps/kibana/nginx-conf/ssl/kibana.crt
 ```
 ... do the same for logstash
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
--keyout master/srv/salt/file/base/linux/apps/logstash/config/ssl/logstash.key \ -out master/srv/salt/file/base/linux/apps/logstash/config/ssl/logstash.crt
+-keyout master/srv/salt/file/base/linux/apps/logstash/config/ssl/logstash.key \
+-out master/srv/salt/file/base/linux/apps/logstash/config/ssl/logstash.crt
 ```
 
 ## starting all containers
