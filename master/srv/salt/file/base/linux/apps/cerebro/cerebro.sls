@@ -9,7 +9,12 @@ cerebro-server:
     - archive_format: tar
     - if_missing: /var/www/cerebro
 
-cf-cerebro.yml:
-  file.managed:
-    - name: /usr/share/cerebro/conf/application.conf
-    - source: salt://linux/apps/cerebro/config/application.conf
+
+cerebro-config:
+  file.recurse:
+    - name: /usr/share/cerebro/conf
+    - source: salt://linux/apps/cerebro/config
+    - user: kibana
+    - group: kibana
+    - file_mode: 644
+    - dir_mode: 774
