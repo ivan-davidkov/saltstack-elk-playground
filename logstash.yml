@@ -14,8 +14,8 @@ services:
     links:
       - master
     networks:
-      - saltOS
-  
+      - sELKp
+
 networks:
   saltOS:
     driver: bridge

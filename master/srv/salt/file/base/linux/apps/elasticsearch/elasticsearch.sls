@@ -10,7 +10,7 @@ elasticsearch-config:
   file.recurse:
     - name: /usr/share/elasticsearch/config
     - source: salt://linux/apps/elasticsearch/config
-    - user: kibana
-    - group: kibana
+    - user: elasticsearch
+    - group: elasticsearch
     - file_mode: 644
     - dir_mode: 774

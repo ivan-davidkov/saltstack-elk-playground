@@ -1,10 +1,10 @@
 version: '2'
 services:
 
-  elastic:
+  elasticsearch:
     build:
-      context: elastic/
-    container_name: elastic
+      context: elasticsearch/
+    container_name: elasticsearch
     volumes:
       - ./elastic/etc/salt:/etc/salt
     environment:
@@ -14,8 +14,8 @@ services:
     links:
       - master
     networks:
-      - saltOS
-  
+      - sELKp
+
 networks:
   saltOS:
     driver: bridge

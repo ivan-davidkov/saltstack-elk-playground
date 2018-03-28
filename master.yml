@@ -16,8 +16,8 @@ services:
     command:
       - /usr/bin/salt-master
     networks:
-      - saltOS
-  
+      - sELKp
+
 networks:
   saltOS:
     driver: bridge

@@ -1,4 +1,4 @@
-elk-logstash:
+elk-logstash-package:
   pkg.installed:
     - pkgs:
       - logstash

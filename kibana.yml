@@ -14,7 +14,7 @@ services:
     links:
       - master
     networks:
-      - saltOS
+      - sELKp
     ports:
       - 9443
 
