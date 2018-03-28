@@ -2,6 +2,8 @@ elk-logstash:
   pkg.installed:
     - pkgs:
       - logstash
+      - java-1.8.0-openjdk
+      - java-1.8.0-openjdk-devel
     - require:
       - sls: defaults.linux.repositories
 
