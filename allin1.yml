@@ -1,0 +1,74 @@
+version: '2'
+services:
+
+  master:
+    build:
+      context: master/
+    container_name: master
+    volumes:
+      - ./master/etc/salt:/etc/salt
+      - ./master/srv:/srv
+    ports:
+      - "4505:4505"
+      - "4506:4506"
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-master
+    networks:
+      - sELKp
+
+  elastic:
+    build:
+      context: elastic/
+    container_name: elastic
+    volumes:
+      - ./elastic/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - sELKp
+    ports:
+      - 9200
+
+  kibana:
+    build:
+      context: kibana/
+    container_name: kibana
+    volumes:
+      - ./kibana/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - sELKp
+    ports:
+      - 9443
+
+  logstash:
+    build:
+      context: logstash/
+    container_name: logstash
+    volumes:
+      - ./logstash/etc/salt:/etc/salt
+    environment:
+      - "SSLAB=0.1"
+    command:
+      - /usr/bin/salt-minion
+    links:
+      - master
+    networks:
+      - sELKp
+    ports:
+      - 2055
+
+networks:
+  sELKp:
+    driver: bridge
