@@ -6,7 +6,7 @@ services:
       context: elasticsearch/
     container_name: elasticsearch
     volumes:
-      - ./elastic/etc/salt:/etc/salt
+      - ./elasticsearch/etc/salt:/etc/salt
     environment:
       - "SSLAB=0.1"
     command:
