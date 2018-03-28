@@ -76,4 +76,24 @@ containerID $ salt '*' test.ping
 containerID $ salt 'kibana' state.apply
 ```
 
+... if you need to start the stack you will need to "enter" each container and run the respective daemon. eg.
+
+*OPEN one terminal per container*
+
+```console
+Host $ docker exec -it kibana bash
+containerID # /usr/share/kibana/bin/kibana
+```
+
+```console
+Host $ docker exec -it logstash bash
+containerID # /usr/share/logstash/bin/logstash
+
+```
+... Elasticsearch will give you an error like: [This account is currently not available.] so you need st start with a `su` parameters
+```console
+Host $ docker exec -it elasticsearch bash
+containerID # su -l elasticsearch -s /usr/share/elasticsearch/bin/elasticsearch
+```
+
 ## enjoy poking around
