@@ -1,1 +1,149 @@
 http.host: "0.0.0.0"
+
+# Enable Netflow module
+# Options list
+modules:
+  - name: netflow
+    # Value type is number
+    # Default value is 2055.
+    # Sets the UDP port on which Logstash listens for network traffic data.
+    # Although 2055 is the default for this setting,
+    # some devices use ports in the range of 9995 through 9998,
+    # with 9996 being the most commonly used alternative.
+    var.input.udp.port: "2055"
+
+    # Value type is number
+    # Default value is 2.
+    # Number of threads processing packets.
+    var.input.udp.workers: "4"
+
+    # Value type is number
+    # Default value is 212992.
+    # The socket receive buffer size in bytes.
+    # The operating system will use the max allowed
+    # value if receive_buffer_bytes is larger than allowed.
+    # Consult your operating system documentation if you need to
+    # increase this max allowed value.
+    var.input.udp.receive_buffer_bytes: "425984"
+
+    # Value type is number
+    # Default value is 2000.
+    # This is the number of unprocessed UDP packets you can hold in memory
+    # before packets will start dropping.
+    var.input.udp.queue_size: "4000"
+
+    # Common options
+    # The following configuration options are supported by all modules:
+
+    # Value type is uri
+    # Default value is "localhost:9200"
+    # Sets the host(s) of the Elasticsearch cluster.
+    # For each host, you must specify the hostname and port.
+    # For example, "myhost:9200". If given an array,
+    # Logstash will load balance requests across the
+    # hosts specified in the hosts parameter.
+    # It is important to exclude dedicated master
+    # nodes from the hosts list to prevent Logstash from sending
+    # bulk requests to the master nodes.
+    # So this parameter should only reference either data or client
+    # nodes in Elasticsearch.
+    var.elasticsearch.hosts: "elasticsearch:9200"
+
+    # Any special characters present in the URLs here MUST be URL escaped!
+    # This means should be put in as %23 for instance.
+    #
+    # Value type is string
+    # Default value is "elastic"
+    # The username to authenticate to a secure Elasticsearch cluster.
+    # var.elasticsearch.username
+    #
+    # Value type is string
+    # Default value is "changeme"
+    # The password to authenticate to a secure Elasticsearch cluster.
+    # var.elasticsearch.password
+    #
+    # Value type is boolean
+    # There is no default value for this setting.
+    # Enable SSL/TLS secured communication to the Elasticsearch cluster.
+    # Leaving this unspecified will use whatever scheme is specified in the URLs
+    # listed in hosts. If no explicit protocol is specified,
+    # plain HTTP will be used. If SSL is explicitly disabled here,
+    # the plugin will refuse to start if an HTTPS URL is given in hosts.
+    # var.elasticsearch.ssl.enabled
+    #
+    # Value type is string
+    # Default value is "strict"
+    # The hostname verification setting when communicating with Elasticsearch.
+    # Set to disable to turn off hostname verification.
+    # Disabling this has serious security concerns.
+    # var.elasticsearch.ssl.verification_mode
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to an X.509 certificate to use to validate SSL certificates
+    # when communicating with Elasticsearch.
+    # var.elasticsearch.ssl.certificate_authority
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to an X.509 certificate to use for client authentication
+    # when communicating with Elasticsearch.
+    # var.elasticsearch.ssl.certificate
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to the certificate key for client authentication
+    # when communicating with Elasticsearch.
+    # var.elasticsearch.ssl.key
+
+    # Value type is string
+    # Default value is "localhost:5601"
+    # Sets the hostname and port of the Kibana instance to use
+    # for importing dashboards and visualizations. For example: "myhost:5601".
+    # var.kibana.host: "kibana:5601"
+
+    # Value type is string
+    # Default value is "http"
+    # Sets the protocol to use for reaching the Kibana instance.
+    # The options are: "http" or "https". The default is "http".
+    # var.kibana.scheme
+    #
+    # Value type is string
+    # Default value is "elastic"
+    # The username to authenticate to a secured Kibana instance.
+    # var.kibana.username
+    #
+    # Value type is string
+    # Default value is "changeme"
+    # The password to authenticate to a secure Kibana instance.
+    # var.kibana.password
+    #
+    # Value type is boolean
+    # Default value is false
+    # Enable SSL/TLS secured communication to the Kibana instance.
+    # var.kibana.ssl.enabled
+    #
+    # Value type is string
+    # Default value is "strict"
+    # The hostname verification setting when communicating with Kibana.
+    # Set to disable to turn off hostname verification.
+    # Disabling this has serious security concerns.
+    # var.kibana.ssl.verification_mode
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to an X.509 certificate to use to validate SSL certificates
+    # when communicating with Kibana.
+    # var.kibana.ssl.certificate_authority
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to an X.509 certificate to use for client authentication
+    # when communicating with Kibana.
+    # var.kibana.ssl.certificate
+    #
+    # Value type is string
+    # There is no default value for this setting
+    # The path to the certificate key for client authentication
+    # when communicating with Kibana.
+    # var.kibana.ssl.key
