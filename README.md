@@ -42,10 +42,33 @@ docker ps
 ```console
 docker exec -it master bash
 ```
-... [inside the container] after the first execution you need to accept all the minions, you can first list them then accept
+... [inside the container] after the first execution you need to accept all the minions. You docker-compose will start showing errors like:
+```console
+Attaching to master, elasticsearch, kibana, logstash
+elasticsearch    | [ERROR   ] The Salt Master has cached the public key for this node, this salt minion will wait for 10 seconds before attempting to re-authenticate
+kibana           | [ERROR   ] The Salt Master has cached the public key for this node, this salt minion will wait for 10 seconds before attempting to re-authenticate
+logstash         | [ERROR   ] The Salt Master has cached the public key for this node, this salt minion will wait for 10 seconds before attempting to re-authenticate
+```
+... the above errors are self-explanatory, Basically you need  to accept the minions keys. [inside the container] you show first list minions keys '-L' and accept these keys '-A'
 ```console
 containerID $ salt-key -L
+Accepted Keys:
+Denied Keys:
+Unaccepted Keys:
+elasticsearch
+kibana
+logstash
+Rejected Keys:
 containerID $ salt-key -A
+The following keys are going to be accepted:
+Unaccepted Keys:
+elasticsearch
+kibana
+logstash
+Proceed? [n/Y] Y
+Key for minion elasticsearch accepted.
+Key for minion kibana accepted.
+Key for minion logstash accepted.
 ```
 ... [inside the container] once all minions keys are accepted by the master you can now play with your salt formulas. start by testing the communications b/w master and minions, then lets state logstash :)
 ```console
