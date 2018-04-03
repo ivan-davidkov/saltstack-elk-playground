@@ -4,6 +4,7 @@ elk-elasticsearch-package:
       - elasticsearch
       - java-1.8.0-openjdk
       - java-1.8.0-openjdk-devel
+      - net-tools-2.0-0.22.20131004git.el7.x86_64
     - require:
       - sls: defaults.linux.repositories
 

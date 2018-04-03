@@ -100,7 +100,7 @@ modules:
     # Default value is "localhost:5601"
     # Sets the hostname and port of the Kibana instance to use
     # for importing dashboards and visualizations. For example: "myhost:5601".
-    # var.kibana.host: "kibana:5601"
+    var.kibana.host: "kibana:5601"
 
     # Value type is string
     # Default value is "http"
