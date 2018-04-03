@@ -1,0 +1,11 @@
+export START_DAEMON=false
+export ES_USER=elasticsearch
+export ES_GROUP=elasticsearch
+export LOG_DIR=/var/log/elasticsearch
+export DATA_DIR=/var/lib/elasticsearch
+export WORK_DIR=/tmp/elasticsearch
+export CONF_DIR=/usr/share/elasticsearch
+export CONF_FILE=/usr/share/elasticsearch/config/elasticsearch.yml
+export RESTART_ON_UPGRADE=true
+export ELASTIC_CONTAINER=true
+export PATH=/usr/share/elasticsearch/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
